@@ -60,10 +60,23 @@ VisFemale = VisFemale.loc[
 ]
 ```
 
-I also filtered the DataFrame to show students whose Average is at least 60.
+I also then made new copy of the original Data Frame to avoid overwriting it. I then proceeded to add the Average to the index. 
 
 ```python
-VisFemale.loc[VisFemale['Average'] >= 60]
+VisFemale = df.copy()
+VisFemale['Average'] = Average
+```
+
+I then filtered the hometown, gender and average of students who are >= 60.
+
+```python
+VisFemale = VisFemale.loc[
+    (VisFemale['Average'] >=60)&
+    (VisFemale['Hometown'] == 'Visayas')&
+    (VisFemale['Gender'] == 'Female'),
+    ['Name','Track','GEAS','Electronics','Average']
+]
+
 ```
 
 ## C. Category-Average Visualization
